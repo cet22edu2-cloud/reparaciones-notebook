@@ -305,16 +305,14 @@ export default function App() {
   const [notifTarget, setNotifTarget]   = useState(null);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const r = await window.storage.get(STORAGE_KEY);
-        if (r?.value) setRepairs(JSON.parse(r.value));
-      } catch {}
-    })();
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) setRepairs(JSON.parse(stored));
+    } catch {}
   }, []);
 
   const save = async (data) => {
-    try { await window.storage.set(STORAGE_KEY, JSON.stringify(data)); } catch {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch {}
     setRepairs(data);
   };
 
