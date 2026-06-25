@@ -26,7 +26,7 @@ const STATUS_CONFIG = {
 
 const EMPTY_FORM = {
   cliente: "", telefono: "", email: "", marca: "", modelo: "",
-  serial: "", falla_reportada: "", diagnostico: "", repuestos: "",
+  serial: "", marca_bootik: "", marca_arranque: "", falla_reportada: "", diagnostico: "", repuestos: "",
   tecnico: "", fecha_ingreso: new Date().toISOString().split("T")[0],
   fecha_estimada: "", estado: "pendiente", notas: "",
 };
@@ -477,6 +477,8 @@ export default function App() {
             <Field label="Marca *"><input style={inp} value={form.marca} onChange={e => f({ marca: e.target.value })} placeholder="Dell, HP, Lenovo..." /></Field>
             <Field label="Modelo *"><input style={inp} value={form.modelo} onChange={e => f({ modelo: e.target.value })} placeholder="Inspiron 15, ThinkPad X1..." /></Field>
             <Field label="Número de Serie"><input style={inp} value={form.serial} onChange={e => f({ serial: e.target.value })} placeholder="SN123456" /></Field>
+            <Field label="Marca de Bootik"><input style={inp} value={form.marca_bootik} onChange={e => f({ marca_bootik: e.target.value })} placeholder="Opcional" /></Field>
+            <Field label="Marca de Arranque"><input style={inp} value={form.marca_arranque} onChange={e => f({ marca_arranque: e.target.value })} placeholder="Opcional" /></Field>
             <Field label="Técnico Asignado"><input style={inp} value={form.tecnico} onChange={e => f({ tecnico: e.target.value })} placeholder="Nombre del técnico" /></Field>
             <div style={{ gridColumn: "1/-1", background: "#FEF3C7", borderRadius: 8, padding: "8px 12px", fontSize: 12, color: "#92400E", fontWeight: 600, marginTop: 8 }}>🔧 Diagnóstico y Reparación</div>
             <Field label="Falla Reportada" col={2}><textarea style={{ ...inp, minHeight: 60, resize: "vertical" }} value={form.falla_reportada} onChange={e => f({ falla_reportada: e.target.value })} placeholder="Descripción del problema según el cliente..." /></Field>
@@ -514,6 +516,7 @@ export default function App() {
               ["Email", selected.email, 2],
               ["Marca", selected.marca], ["Modelo", selected.modelo],
               ["Serial", selected.serial], ["Técnico", selected.tecnico],
+              ["Marca de Bootik", selected.marca_bootik], ["Marca de Arranque", selected.marca_arranque],
               ["Falla Reportada", selected.falla_reportada, 2],
               ["Diagnóstico", selected.diagnostico, 2],
               ["Repuestos", selected.repuestos, 2],
